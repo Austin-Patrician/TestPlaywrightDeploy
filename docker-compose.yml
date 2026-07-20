@@ -1,0 +1,13 @@
+services:
+  testplaywrightdeploy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: playwright-mvc-app
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+    restart: unless-stopped
